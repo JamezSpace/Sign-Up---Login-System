@@ -1,0 +1,48 @@
+form{
+    max-width: 30%;
+    padding: 20px 10px;
+    border: 2px solid black;
+    margin: 0 auto;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+form h1{
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+form div{
+    margin-bottom: 10px;
+}
+
+form label{
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+}
+
+form input{
+    width: 100%;
+    padding: 8px;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+}
+
+form button{
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: black;
+    padding: 10px 25px;
+    font-size: 1.15rem;
+}
+
+form button:hover{
+    background-color: black;
+    color: #fff;
+}
+
+form .buttons{
+    display: flex;
+    justify-content: space-evenly;
+}

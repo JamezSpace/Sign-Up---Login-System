@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="signUp.css">
+</head>
+
+<body>
+    <form action="/handleReq" method="post" id="signUp">
+        <h1>Sign Up</h1>
+        <div class="name">
+            <label for="name_input">Name</label><br>
+            <input type="text" name="name" id="name_input">
+        </div>
+        <div class="email">
+            <label for="email_input">Email</label><br>
+            <input type="email" name="email" id="email_input">
+        </div>
+        <div class="password">
+            <label for="password">Password</label><br>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <div class="buttons">
+            <button type="reset">Clear</button>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <script src="signUp.js"></script>
+</body>
+
+</html>
