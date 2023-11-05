@@ -3,7 +3,7 @@ const router = require('./routes')
 const app = express()
 
 const bodyparser = require('body-parser')
-app.use(bodyparser.urlencoded({extended : true}))
+app.use(bodyparser.urlencoded({extended : false}))
 
 app.use(router)
 app.use(express.static("views"))

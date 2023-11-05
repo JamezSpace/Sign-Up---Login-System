@@ -1,17 +1,38 @@
 const router = require('express').Router()
 const handleRequests = require('./views/handleReq')
 const bcrypt = require('bcrypt')
+const { check, validationResult } = require('express-validator')
+const urlencodedParser = require('body-parser').urlencoded({ extended: false })
 
 
 router.get('/', (req, res) => {
-    res.render("signUp")
+    res.render ("signUp", {
+        title : "Sign Up"
+    })
 })
 
-router.post('/handleReq', handleRequests, async (req, res) => {
-    // localStorage.setItem("name", user_input.name)
-    // localStorage.setItem("email", user_input.email)
-    // localStorage.setItem("password", await bcrypt.hash(user_input.password, "##"))
-    console.log("successful submission");
+router.post('/handleReq', handleRequests, (req, res) => {
+    let data = res.locals.data
+    
+    res.json(data)
 })
+
+// router.post('/register', urlencodedParser, [
+//     check('username', 'This username must me 3+ characters long')
+//         .exists()
+//         .isLength({ min: 3 }),
+//     check('email', 'Email is not valid')
+//         .isEmail()
+//         .normalizeEmail()
+// ], (req, res)=> {
+//     const errors = validationResult(req)
+//     if(!errors.isEmpty()) {
+//         // return res.status(422).jsonp(errors.array())
+//         const alert = errors.array()
+//         res.render('signUp', {
+//             alert
+//         })
+//     }
+// })
 
 module.exports = router

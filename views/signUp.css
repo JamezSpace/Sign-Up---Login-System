@@ -1,9 +1,9 @@
-form{
-    max-width: 30%;
-    padding: 20px 10px;
-    border: 2px solid black;
+body{
+    max-width: 70%;
     margin: 0 auto;
-    font-size: 18px;
+}
+form{
+    font-size: 17px;
     box-sizing: border-box;
 }
 
@@ -13,36 +13,42 @@ form h1{
 }
 
 form div{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 form label{
-    font-size: 1.25rem;
-    margin-bottom: 15px;
+    font-size: 1rem;
 }
 
 form input{
     width: 100%;
     padding: 8px;
     font-size: 1.2rem;
+    border: 1.5px solid rgb(0, 0, 0, 0.5);
+    border-radius: 5px;
     box-sizing: border-box;
+    outline: none;
+    margin-top: 8px;
+}
+
+form input:focus, input:active{
+    border-color: rgb(0, 0, 200, 0.5);
 }
 
 form button{
     border: none;
     border-radius: 5px;
-    background-color: #fff;
-    color: black;
+    background-color: rgb(0, 0, 200, 0.5);
+    color: #fff;
     padding: 10px 25px;
-    font-size: 1.15rem;
+    font-size: 90%;
 }
 
-form button:hover{
-    background-color: black;
+form button:hover, form button:active, form button:focus {
+    background-color: rgb(0, 0, 150, 0.85);
     color: #fff;
 }
 
 form .buttons{
-    display: flex;
-    justify-content: space-evenly;
+    width: fit-content;
 }
