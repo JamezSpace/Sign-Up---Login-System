@@ -6,15 +6,18 @@ const urlencodedParser = require('body-parser').urlencoded({ extended: false })
 
 
 router.get('/', (req, res) => {
-    res.render ("signUp", {
-        title : "Sign Up"
+    res.render("signUp", {
+        title: "Sign Up"
     })
 })
 
 router.post('/handleReq', handleRequests, (req, res) => {
     let data = res.locals.data
-    
-    res.json(data)
+    console.log(data);
+    if (data.msg != "success") res.render("signUp", {
+        title: "Sign Up",
+        data
+    })
 })
 
 // router.post('/register', urlencodedParser, [

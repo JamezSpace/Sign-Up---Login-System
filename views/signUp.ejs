@@ -9,15 +9,22 @@
 
 <body>
     <h1>Sign Up</h1>
+    <% if(typeof data !== 'undefined') { %>
+        <% for(let i = 0; i < data.msg.length; i ++){ %>
+        <div class="errorBar">
+            <span><%= data.msg[i] %></span>
+            <span class="close_error_bar">&times;</span>
+        </div>
+        <% } %>
+    <% } %>
     <form action="/handleReq" method="post" id="signUp" name="form">
         <div class="name">
             <label for="name_input">Name</label><br>
             <input type="text" name="name" id="name_input">
         </div>
         <div class="email">
-            <label for="email_input">Email</label><br>
+            <label for="email_input">Email <small id="email_note">(We'll never share your email with anyone)</small></label><br>
             <input type="email" name="email" id="email_input" aria-describedby="email_note">
-            <small id="email_note">We'll never share your email with anyone</small> 
         </div>
         <div class="password">
             <label for="password">Password</label><br>

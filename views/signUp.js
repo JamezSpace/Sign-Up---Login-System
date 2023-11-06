@@ -80,12 +80,21 @@ function defaultInputs(toDefault, ...elements) {
         const each_input = elements[i];
 
         if (eval(`each_input.style.${property}`) == checkFor) {
-            eval(`each_input.style.${property}`) = my_default;
+            eval(`each_input.style.${property} = "${my_default}"`);
         }
     }
 }
 
 document.getElementById("signUp").addEventListener("submit", (e) => {
     if (!validInputs()) e.preventDefault();
-    e.preventDefault();
 })
+
+const close_btns = document.getElementsByClassName("close_error_bar");
+
+for (let i = 0; i < close_btns.length; i++) {
+    const close_btn = close_btns[i];
+    close_btn.addEventListener("click", () => {
+        close_btn.parentNode.style.display = "none";
+    })
+    
+}

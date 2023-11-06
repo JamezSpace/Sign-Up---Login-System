@@ -27,20 +27,18 @@ function handleRequests(req, res, next) {
     
     const valid_name = nameValid(user_input.name)
     const valid_email = emailValid(user_input.email)
-    let msg, data;
+    let msgArray = [] , data;
 
-    if (!valid_name) msg = "No numbers allowed in Username"
-    if (!valid_email) msg = "Invalid Email Extension"
+    if (!valid_name) msgArray.push("No numbers allowed in Username")
+    if (!valid_email) msgArray.push("Invalid Email Extension")
 
     if (valid_name && valid_email) {
         data = {
-            code: 200,
             msg: "success"
         }
     } else {
         data = {
-            code: 201,
-            msg: msg
+            msg: msgArray
         }
     }
     res.locals.data = data
