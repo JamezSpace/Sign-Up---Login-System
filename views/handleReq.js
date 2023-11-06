@@ -24,16 +24,16 @@ function emailValid(mail) {
 
 function handleRequests(req, res, next) {
     const user_input = req.body
-    
     const valid_name = nameValid(user_input.name)
     const valid_email = emailValid(user_input.email)
-    let msgArray = [] , data;
+    let msgArray = [], data;
 
     if (!valid_name) msgArray.push("No numbers allowed in Username")
     if (!valid_email) msgArray.push("Invalid Email Extension")
 
     if (valid_name && valid_email) {
         data = {
+            auto_login : user_input.auto_login,
             msg: "success"
         }
     } else {

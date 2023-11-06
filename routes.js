@@ -18,6 +18,8 @@ router.post('/handleReq', handleRequests, (req, res) => {
         title: "Sign Up",
         data
     })
+
+    // if(data.auto_login === 'undefined') // render login page
 })
 
 // router.post('/register', urlencodedParser, [
