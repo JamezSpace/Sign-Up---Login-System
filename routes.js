@@ -5,9 +5,15 @@ const { check, validationResult } = require('express-validator')
 const urlencodedParser = require('body-parser').urlencoded({ extended: false })
 
 
-router.get('/', (req, res) => {
+router.get('/sign_up', (req, res) => {
     res.render("signUp", {
         title: "Sign Up"
+    })
+})
+
+router.get('/login', (req, res) => {
+    res.render("login", {
+        title: "Login"
     })
 })
 

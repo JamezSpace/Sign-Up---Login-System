@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="signUp.css">
+    <title><%= title %></title>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <% if(typeof data !== 'undefined') { %>
+        <% for(let i = 0; i < data.msg.length; i ++){ %>
+        <div class="errorBar">
+            <span><%= data.msg[i] %></span>
+            <span class="close_error_bar">&times;</span>
+        </div>
+        <% } %>
+    <% } %>
+    <form action="/handleReq" method="post" id="login">
+        <div class="email">
+            <label for="email_input">Email</label><br>
+            <input type="email" name="email" id="email_input">
+        </div>
+        <div class="password">
+            <label for="password">Password</label><br>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <button type="submit" id="submit">Login</button>
+    </form>
+    <script src="login.js"></script>
+</body>
+</html>
