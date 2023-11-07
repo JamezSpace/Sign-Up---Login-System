@@ -33,22 +33,4 @@ router.post('/handleReq', handleRequests, (req, res) => {
     // if(data.auto_login === 'undefined') // render login page
 })
 
-// router.post('/register', urlencodedParser, [
-//     check('username', 'This username must me 3+ characters long')
-//         .exists()
-//         .isLength({ min: 3 }),
-//     check('email', 'Email is not valid')
-//         .isEmail()
-//         .normalizeEmail()
-// ], (req, res)=> {
-//     const errors = validationResult(req)
-//     if(!errors.isEmpty()) {
-//         // return res.status(422).jsonp(errors.array())
-//         const alert = errors.array()
-//         res.render('signUp', {
-//             alert
-//         })
-//     }
-// })
-
 module.exports = router
