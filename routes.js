@@ -5,7 +5,7 @@ const { check, validationResult } = require('express-validator')
 const urlencodedParser = require('body-parser').urlencoded({ extended: false })
 
 
-router.get('/sign_up', (req, res) => {
+router.get('/signup', (req, res) => {
     res.render("signUp", {
         title: "Sign Up"
     })
@@ -20,8 +20,13 @@ router.get('/login', (req, res) => {
 router.post('/handleReq', handleRequests, (req, res) => {
     let data = res.locals.data
     console.log(data);
-    if (data.msg != "success") res.render("signUp", {
+    if (data.page == 'signup' && data.msg != "success") res.render("signUp", {
         title: "Sign Up",
+        data
+    })
+
+    if (data.page == 'login' && data.msg != "success") res.render("login", {
+        title: "Login",
         data
     })
 
