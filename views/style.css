@@ -1,0 +1,94 @@
+body {
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+form {
+    font-size: 17px;
+    box-sizing: border-box;
+}
+
+form h1 {
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+form div {
+    margin-bottom: 20px;
+}
+
+form label {
+    font-size: 1rem;
+}
+
+form input:not(input[type="checkbox"]) {
+    width: 100%;
+    padding: 8px;
+    font-size: 1.2rem;
+    border: 1.5px solid rgb(0, 0, 0, 0.5);
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    margin-top: 8px;
+}
+
+form input:focus,
+input:active {
+    border-color: rgb(0, 0, 200, 0.5);
+}
+
+form input:not(input[type="checkbox"]).invalid{
+    border-color: red;
+}
+
+form button {
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 200, 0.5);
+    color: #fff;
+    padding: 10px 25px;
+    font-size: 90%;
+}
+
+form button:hover,
+form button:active,
+form button:focus {
+    background-color: rgb(0, 0, 150, 0.85);
+    color: #fff;
+}
+
+form .buttons {
+    width: fit-content;
+}
+
+div.errorBar {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 25px;
+    background-color: #f99c39;
+    color: rgb(251, 249, 255, 0.9);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 3px;
+}
+
+div.errorBar .close_error_bar {
+    width: 18px;
+    aspect-ratio: 1/1;
+    text-align: center;
+    font-size: 1.2rem;
+    border-radius: 50%;
+}
+
+div.errorBar .close_error_bar:hover {
+    background-color: rgb(0, 0, 0, 0.5);
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+form input[type="checkbox"]{
+    scale: 1.5;
+    margin-bottom: 20px;
+}
