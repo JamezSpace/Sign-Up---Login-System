@@ -24,7 +24,6 @@ function emailValid(mail) {
 
 let signupSrc;
 function handle_signup_requests(req, res, next) {
-    let sourcePage = req.headers.referer.split("/").slice(-1)[0]
     if (typeof signupSrc === 'undefined') signupSrc = req.headers.referer.split("/").slice(-1)[0]
     const user_input = req.body
     const valid_name = nameValid(user_input.name)
