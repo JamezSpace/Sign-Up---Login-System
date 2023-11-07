@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const middleware = require('./views/handleReq')
 const bcrypt = require('bcrypt')
-const { check, validationResult } = require('express-validator')
 const urlencodedParser = require('body-parser').urlencoded({ extended: false })
 
 
@@ -38,22 +37,5 @@ router.post('/handle_requests_login', middleware.handle_login_requests, (req, re
 
     // res.send('<h1>Welcome</h1>')
 })
-// router.post('/register', urlencodedParser, [
-//     check('username', 'This username must me 3+ characters long')
-//         .exists()
-//         .isLength({ min: 3 }),
-//     check('email', 'Email is not valid')
-//         .isEmail()
-//         .normalizeEmail()
-// ], (req, res)=> {
-//     const errors = validationResult(req)
-//     if(!errors.isEmpty()) {
-//         // return res.status(422).jsonp(errors.array())
-//         const alert = errors.array()
-//         res.render('signUp', {
-//             alert
-//         })
-//     }
-// })
 
 module.exports = router
