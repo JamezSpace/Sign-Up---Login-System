@@ -25,7 +25,7 @@ function emailValid(mail) {
 let signupSrc;
 function handle_signup_requests(req, res, next) {
     let sourcePage = req.headers.referer.split("/").slice(-1)[0]
-    if(typeof signupSrc === 'undefined') signupSrc = req.headers.referer.split("/").slice(-1)[0]
+    if (typeof signupSrc === 'undefined') signupSrc = req.headers.referer.split("/").slice(-1)[0]
     const user_input = req.body
     const valid_name = nameValid(user_input.name)
     const valid_email = emailValid(user_input.email)
@@ -39,8 +39,13 @@ function handle_signup_requests(req, res, next) {
     if (valid_name && valid_email) {
         data = {
             page: signupSrc,
-            auto_login: auto_login,
-            msg: "success"
+            msg: "success",
+            user_details: {
+                user_name: user_input.name,
+                user_email: user_input.email,
+                user_password: user_input.password,
+                auto_login: auto_login
+            }
         }
     } else {
         data = {
@@ -56,14 +61,18 @@ function handle_signup_requests(req, res, next) {
 let loginSrc;
 function handle_login_requests(req, res, next) {
     let msgArray = [], data;
-    if(typeof loginSrc === 'undefined') loginSrc = req.headers.referer.split("/").slice(-1)[0]
+    if (typeof loginSrc === 'undefined') loginSrc = req.headers.referer.split("/").slice(-1)[0]
     const valid_email = emailValid(req.body.email)
 
     if (!valid_email) msgArray.push("Invalid Email Extension")
 
     if (valid_email) data = {
         page: loginSrc,
-        msg: "success"
+        msg: "success",
+        user_details : {
+            user_email : req.body.email,
+            user_password : req.body.password
+        }
     }
     else data = {
         page: loginSrc,
@@ -74,4 +83,4 @@ function handle_login_requests(req, res, next) {
     next()
 }
 
-module.exports = {handle_signup_requests, handle_login_requests}
+module.exports = { handle_signup_requests, handle_login_requests }
