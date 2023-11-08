@@ -2,6 +2,7 @@ const router = require('express').Router()
 const middleware = require('./views/handleReq')
 const bcrypt = require('bcrypt')
 const database = require('./database')
+let dbObj = new database()
 const urlencodedParser = require('body-parser').urlencoded({ extended: false })
 
 router.get('/signup', (req, res) => {
@@ -26,13 +27,13 @@ router.post('/handle_requests_signup', middleware.handle_signup_requests, async 
 
     const hashedPassword = await bcrypt.hash(data.user_details.user_password, 10)
     data.user_details.user_password = hashedPassword
-    const obj = new database()
-    obj.add_to_db = data
+    // adding to database
+    dbObj.add_to_db = data.user_details
 
     if(data.user_details.auto_login === 'off') res.redirect('/login')
 })
 
-router.post('/handle_requests_login', middleware.handle_login_requests, (req, res) => {
+router.post('/handle_requests_login', middleware.handle_login_requests, async (req, res) => {
     let data = res.locals.data
     let dataObject = data.user_details
 
@@ -41,10 +42,10 @@ router.post('/handle_requests_login', middleware.handle_login_requests, (req, re
         data
     })
     
-    const dbObject = new database().checkIfExists(dataObject.user_email, dataObject.user_password)
+    const login_status = await dbObj.checkIfExists(dataObject.user_email, dataObject.user_password)
 
-    if (dbObject === 1) res.send('<h1>Welcome</h1>')
-    else if(dbObject === 0) res.render("login", {
+    if (login_status === 1) res.send('<h1>Welcome</h1>')
+    else if(login_status === 0) res.render("login", {
         title : "Login",
         data : {
             msg : ["Incorrect Password!!"]

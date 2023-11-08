@@ -3,8 +3,7 @@ const bcrypt = require('bcrypt')
 class database {
     #database = new Array();
 
-    constructor() {
-    }
+    constructor() {}
 
     /**
      * @param {Object} data_to_be_stored
@@ -15,7 +14,7 @@ class database {
     }
 
     get viewdb() {
-        console.log(this.#database)
+        return this.#database
     }
 
     /**
@@ -28,16 +27,18 @@ class database {
      */
     async checkIfExists(email, password) {
         let found = false;
+        
         for (let i = 0; i < this.#database.length; i++) {
-            const each_person = array[i];
-
+            const each_person = this.#database[i];
+            
             if (each_person.user_email === email) {
                 const passwordMatched = await bcrypt.compare(password, each_person.user_password)
-
+                
                 if (passwordMatched) return 1
                 else return 0
             }
         }
+        
         return -1
     }
 }
