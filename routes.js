@@ -20,7 +20,7 @@ router.get('/login', (req, res) => {
 router.post('/handle_requests_signup', middleware.handle_signup_requests, async (req, res) => {
     let data = res.locals.data
     
-    if (data.msg != "success") res.render("signUp", {
+    if (data.msg != "success") return res.render("signUp", {
         title: "Sign Up",
         data
     })
@@ -37,7 +37,7 @@ router.post('/handle_requests_login', middleware.handle_login_requests, async (r
     let data = res.locals.data
     let dataObject = data.user_details
 
-    if (data.msg != "success") res.render("login", {
+    if (data.msg != "success") return res.render("login", {
         title: "Login",
         data
     })

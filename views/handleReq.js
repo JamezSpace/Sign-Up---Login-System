@@ -15,7 +15,7 @@ function emailValid(mail) {
 
     // test for valid extension
     for (let i = 0; i < exts.length; i++)
-        if (mail.endsWith(exts[i])) ext_valid = true
+        if (mail.toLowerCase().endsWith(exts[i])) ext_valid = true
 
     if (!ext_valid) return false
 
